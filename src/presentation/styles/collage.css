@@ -61,7 +61,7 @@ html:not(.reduce) .rip-cam.in .rip-head { animation: popup .55s .45s cubic-bezie
 .rip-wink { --w: clamp(110px, 11vw, 160px); right: calc(var(--pad) + 3vw); top: clamp(70px, 10vh, 130px); }
 .rip-casos { --w: clamp(100px, 9.5vw, 140px); right: calc(var(--pad) + 4vw); top: clamp(80px, 12vh, 150px); }
 .rip-stack { --w: clamp(90px, 8vw, 120px); right: calc(var(--pad) + 5vw); top: clamp(80px, 11vh, 140px); }
-.rip-hi { --w: clamp(110px, 10vw, 150px); right: 2%; top: clamp(-250px, -17vw, -140px); }
+.rip-hi { --w: clamp(110px, 10vw, 150px); right: 2%; top: clamp(-180px, -12vw, -100px); }
 .rip-fish { --w: clamp(170px, 17vw, 250px); right: calc(var(--pad) * .2); top: -10px; }
 .rip-fish .rip-paper { width: 140%; bottom: -30%; }
 .rip-shh { position: relative; --w: 64px; flex: none; margin-left: 18px; }

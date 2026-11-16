@@ -29,19 +29,18 @@ interface SoundContextValue {
 const SoundContext = createContext<SoundContextValue | null>(null)
 
 /**
- * Som opcional (desligado por padrão). Usa Web Audio: os arquivos só são baixados
- * quando o visitante liga o som, e a trilha toca em loop, bem baixa, com fade.
+ * Som opcional (desligado por padrão). A trilha usa o elemento de áudio nativo,
+ * iniciado no próprio toque — mais confiável em navegadores mobile. Os efeitos
+ * usam Web Audio e são carregados só quando o visitante liga o som.
  */
 export function SoundProvider({ children }: { children: ReactNode }) {
   const [enabled, setEnabled] = useState(false)
   const ctxRef = useRef<AudioContext | null>(null)
-  const buffers = useRef<Partial<Record<SoundName | 'music', AudioBuffer>>>({})
-  const music = useRef<{ src: AudioBufferSourceNode; gain: GainNode } | null>(
-    null,
-  )
+  const buffers = useRef<Partial<Record<SoundName, AudioBuffer>>>({})
+  const music = useRef<HTMLAudioElement | null>(null)
   const enabledRef = useRef(false)
 
-  const load = useCallback(async (key: SoundName | 'music', src: string) => {
+  const load = useCallback(async (key: SoundName, src: string) => {
     const ctx = ctxRef.current
     if (!ctx || buffers.current[key]) return
     try {
@@ -51,29 +50,20 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const startMusic = useCallback(() => {
-    const ctx = ctxRef.current
-    const buffer = buffers.current.music
-    if (!ctx || !buffer || music.current || !enabledRef.current) return
-    const gain = ctx.createGain()
-    gain.gain.setValueAtTime(0, ctx.currentTime)
-    gain.gain.linearRampToValueAtTime(MUSIC.volume, ctx.currentTime + 2)
-    const src = ctx.createBufferSource()
-    src.buffer = buffer
-    src.loop = true
-    src.connect(gain).connect(ctx.destination)
-    src.start()
-    music.current = { src, gain }
+    if (!enabledRef.current) return
+    const audio = music.current ?? new Audio(MUSIC.src)
+    audio.loop = true
+    audio.volume = MUSIC.volume
+    music.current = audio
+    // `play()` é disparado de forma síncrona no clique para atender ao Safari/iOS.
+    audio.play().catch(() => undefined)
   }, [])
 
   const stopMusic = useCallback(() => {
-    const ctx = ctxRef.current
-    const m = music.current
-    if (!ctx || !m) return
-    music.current = null
-    m.gain.gain.cancelScheduledValues(ctx.currentTime)
-    m.gain.gain.setValueAtTime(m.gain.gain.value, ctx.currentTime)
-    m.gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6)
-    setTimeout(() => m.src.stop(), 700)
+    const audio = music.current
+    if (!audio) return
+    audio.pause()
+    audio.currentTime = 0
   }, [])
 
   const toggle = useCallback(() => {
@@ -87,7 +77,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       Promise.all(
         (Object.keys(SOUNDS) as SoundName[]).map((k) => load(k, SOUNDS[k].src)),
       )
-      load('music', MUSIC.src).then(startMusic)
+      startMusic()
     } else {
       stopMusic()
     }
@@ -113,7 +103,10 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       else if (enabledRef.current) ctx.resume()
     }
     document.addEventListener('visibilitychange', onVisibility)
-    return () => document.removeEventListener('visibilitychange', onVisibility)
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility)
+      music.current?.pause()
+    }
   }, [])
 
   const value = useMemo(

@@ -46,6 +46,14 @@ export function CaseStudySection({ caseStudy }: { caseStudy: CaseStudy }) {
               </div>
             ))}
           </dl>
+          <p className="case-stack">
+            {stack}{' '}
+            {link && (
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            )}
+          </p>
           {notice && (
             <div className="confid-row">
               <HeadSticker
@@ -71,17 +79,6 @@ export function CaseStudySection({ caseStudy }: { caseStudy: CaseStudy }) {
       {showcase.type === 'frames' && (
         <FramesShowcase {...showcase} withCamera={sticker === 'camera'} />
       )}
-
-      <div className="wrap">
-        <p className="case-stack">
-          {stack}{' '}
-          {link && (
-            <a href={link.url} target="_blank" rel="noopener noreferrer">
-              {link.label}
-            </a>
-          )}
-        </p>
-      </div>
     </section>
   )
 }
