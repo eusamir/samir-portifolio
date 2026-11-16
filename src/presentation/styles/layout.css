@@ -51,15 +51,13 @@
 .menu-btn { position: relative; z-index: 56; }
 html.scroll-locked { overflow: hidden; }
 
-/* No celular, o menu funciona como uma tela inteira — sem deixar conteúdo
-   da página aparecendo na lateral. */
+/* Em navegadores móveis, use a viewport dinâmica para o painel chegar até o
+   fim da área visível, inclusive dentro do navegador do Instagram. */
 @media (max-width: 767px) {
   .menu-panel {
-    left: 0;
-    width: 100%;
-    max-width: none;
-    box-sizing: border-box;
-    border-left: 0;
+    bottom: auto;
+    height: 100vh;
+    height: 100dvh;
   }
 }
 /* Trilho de progresso */
