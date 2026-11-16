@@ -50,6 +50,18 @@
 .menu-label { margin: 0 0 4px; font-size: 11px; color: var(--fg2); }
 .menu-btn { position: relative; z-index: 56; }
 html.scroll-locked { overflow: hidden; }
+
+/* No celular, o menu funciona como uma tela inteira — sem deixar conteúdo
+   da página aparecendo na lateral. */
+@media (max-width: 767px) {
+  .menu-panel {
+    left: 0;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    border-left: 0;
+  }
+}
 /* Trilho de progresso */
 .rail { --p: 0; position: fixed; left: 22px; top: 50%; transform: translateY(-50%); height: 56vh; width: 14px; z-index: 40; display: none; }
 @media (min-width: 1180px) { .rail { display: block; } }
