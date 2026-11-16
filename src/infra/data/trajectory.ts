@@ -1,0 +1,98 @@
+import type { TraceSpanDTO } from '@/infra/modules/trajectory/dtos/DTO'
+
+export const trajectoryData: TraceSpanDTO[] = [
+  {
+    id: 'jovem-aprendiz',
+    role: 'Jovem Aprendiz',
+    organization: 'Grupo Ceuma',
+    kind: 'job',
+    start: '2021-01',
+    end: '2021-07',
+    periodLabel: '2021',
+    title: 'Jovem Aprendiz no Grupo Ceuma',
+    description:
+      'Os primeiros sites e APIs, com HTML, CSS e JavaScript. Soluções simples, que precisavam funcionar.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    id: 'oxygeni',
+    role: 'Analista de Sistemas',
+    organization: 'Oxygeni, Grupo Ceuma',
+    kind: 'job',
+    start: '2021-07',
+    end: '2025-05',
+    periodLabel: 'jul 2021 até mai 2025',
+    title: 'Analista de Sistemas na Oxygeni',
+    description:
+      'Sistemas internos e marketplaces acadêmicos do Grupo Ceuma. Liderança técnica na arquitetura e na organização de código, e migração de aplicações legadas com foco em performance, SEO e escalabilidade.',
+    tags: [
+      'Next.js',
+      'React',
+      'Spring Boot',
+      'TypeScript',
+      'GraphQL',
+      'Strapi',
+      'Hygraph',
+    ],
+  },
+  {
+    id: 'freelancer',
+    role: 'Full-stack freelancer',
+    organization: 'Projetos paralelos',
+    kind: 'parallel',
+    start: '2022-01',
+    end: null,
+    periodLabel: 'jan 2022 em diante, em paralelo',
+    title: 'Full-stack freelancer',
+    description:
+      'Aplicações web para empresas e profissionais autônomos, APIs com autenticação JWT, o portfólio da atriz Isis Andrade e o Rural Track, app Android de gestão de viveiros de peixes publicado na Play Store.',
+    tags: [
+      'React Native',
+      'Expo Router',
+      'Next.js',
+      'Hygraph',
+      'Node.js',
+      'Spring Boot',
+      'PostgreSQL',
+    ],
+  },
+  {
+    id: 'tds',
+    role: 'Engenheiro de Software',
+    organization: 'TDS Company, Grupo Moura',
+    kind: 'job',
+    start: '2025-05',
+    end: '2026-11',
+    periodLabel: 'mai 2025 até 2026',
+    title: 'Engenheiro de Software na TDS Company',
+    description:
+      'Manutenção, evolução e modernização de plataformas críticas do Grupo Moura, que atendem clientes no Brasil e na Argentina, com foco em qualidade e testes.',
+    tags: ['Java 17', 'Spring Boot', 'Angular', 'React'],
+  },
+  {
+    id: 'grupo-mateus',
+    role: 'Arquitetura de Soluções',
+    organization: 'Grupo Mateus',
+    kind: 'job',
+    start: '2026-11',
+    end: null,
+    periodLabel: 'nov 2026, span aberto',
+    title: 'Arquitetura de Soluções no Grupo Mateus',
+    description:
+      'Primeiro mês no time. Este é o span mais curto do trace e o único ainda em execução. O trabalho daqui entra no portfólio quando puder ser público.',
+    tags: ['Java', 'Angular', 'Golang', 'On-premise'],
+  },
+  {
+    id: 'undb',
+    role: 'Engenharia de Software',
+    organization: 'UNDB, conclusão',
+    kind: 'milestone',
+    start: '2026-12',
+    end: null,
+    periodLabel: 'dez 2026, previsto',
+    title: 'Bacharelado em Engenharia de Software',
+    description:
+      'Conclusão prevista na UNDB, em São Luís. A teoria fechando o ciclo de cinco anos de prática.',
+    tags: [],
+  },
+]

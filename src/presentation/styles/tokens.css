@@ -1,0 +1,22 @@
+/* Paleta Herança roxa: ameixa, violeta e âmbar. Zona "a" = seções claras, zona "b" = capítulos escuros. */
+:root {
+  color-scheme: light;
+  --a-bg: #f5f2ff; --a-fg: #1e1538; --a-fg2: #5a4f78; --a-acc: #6236e8; --a-rule: rgba(30, 21, 56, .14); --a-panel: #eae4fb; --a-sig: #9a5f00; --a-node: #d08a12;
+  --b-bg: #160f2b; --b-fg: #f2eeff; --b-fg2: #b3a8d6; --b-acc: #a98bff; --b-rule: rgba(242, 238, 255, .14); --b-panel: #211842; --b-sig: #ffb547; --b-node: #ffb547;
+  --lens-bg: #160f2b; --lens-line: #a98bff; --lens-dim: rgba(169, 139, 255, .16);
+  --mf-bg: #6236e8; --mf-fg: #f5f2ff; --mf-dim: rgba(245, 242, 255, .22); --mf-hot: #ffb547;
+  --sans: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
+  --mono: var(--font-mono), ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  --pad: clamp(20px, 5vw, 64px);
+  --max: 1240px;
+  --head-h: 68px;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --a-bg: #160f2b; --a-fg: #f2eeff; --a-fg2: #b3a8d6; --a-acc: #a98bff; --a-rule: rgba(242, 238, 255, .13); --a-panel: #211842; --a-sig: #ffb547; --a-node: #ffb547;
+  --b-bg: #0f0a1f; --b-fg: #f2eeff; --b-fg2: #a79ccb; --b-acc: #a98bff; --b-rule: rgba(242, 238, 255, .12); --b-panel: #181133; --b-sig: #ffb547; --b-node: #ffb547;
+  --lens-bg: #0b0716; --mf-bg: #3a23a0;
+}
+body { --bg: var(--a-bg); --fg: var(--a-fg); --fg2: var(--a-fg2); --acc: var(--a-acc); --rule: var(--a-rule); --panel: var(--a-panel); --sig: var(--a-sig); --pulse: var(--a-node); }
+body[data-zone='b'] { --bg: var(--b-bg); --fg: var(--b-fg); --fg2: var(--b-fg2); --acc: var(--b-acc); --rule: var(--b-rule); --panel: var(--b-panel); --sig: var(--b-sig); --pulse: var(--b-node); }

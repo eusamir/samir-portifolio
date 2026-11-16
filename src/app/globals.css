@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+/* Estilos organizados por responsabilidade, em src/presentation/styles */
+@import '../presentation/styles/tokens.css';
+@import '../presentation/styles/base.css';
+@import '../presentation/styles/layout.css';
+@import '../presentation/styles/hero.css';
+@import '../presentation/styles/sections.css';
+@import '../presentation/styles/collage.css';

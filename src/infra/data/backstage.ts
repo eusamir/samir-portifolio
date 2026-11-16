@@ -1,0 +1,56 @@
+import type { BackstagePhotoDTO } from '@/infra/modules/backstage/dtos/DTO'
+
+export const backstageData: BackstagePhotoDTO[] = [
+  {
+    order: 1,
+    image: { url: '/images/photos/projeta-time.webp' },
+    alt: 'Samir com a equipe em frente ao painel da Projeta',
+    caption: 'Projeta, com o time',
+    size: 'lg',
+    shape: 'landscape',
+  },
+  {
+    order: 2,
+    image: { url: '/images/photos/apresentando-rural-track.webp' },
+    alt: 'Samir apresentando os módulos do Rural Track',
+    caption: 'Apresentando o Rural Track',
+    size: 'md',
+    shape: 'portrait',
+    offset: 'down',
+  },
+  {
+    order: 3,
+    image: { url: '/images/photos/undb.webp' },
+    alt: 'Samir acenando no saguão da UNDB',
+    caption: 'UNDB, São Luís',
+    size: 'sm',
+    shape: 'square',
+    offset: 'up',
+  },
+  {
+    order: 4,
+    image: { url: '/images/photos/pulse.webp' },
+    alt: 'Selfie de espanto em frente ao letreiro da Pulse',
+    caption: 'No escritório da Pulse',
+    size: 'lg',
+    shape: 'landscape',
+    offset: 'down',
+  },
+  {
+    order: 5,
+    image: { url: '/images/photos/grupo-mateus.webp' },
+    alt: 'Samir na tela do notebook, entrando numa chamada de vídeo',
+    caption: 'Grupo Mateus, 2026',
+    size: 'md',
+    shape: 'portrait',
+    offset: 'up',
+  },
+  {
+    order: 6,
+    image: { url: '/images/photos/neve.webp' },
+    alt: 'Selfie de óculos na neve, com montanhas ao fundo',
+    caption: 'Uma pausa na neve',
+    size: 'sm',
+    shape: 'square',
+  },
+]
